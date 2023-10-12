@@ -11,7 +11,7 @@ mongoose.connect('mongodb+srv://soheldatta17:sohel_17rik@cluster0.cgka43s.mongod
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function () {
-    console.log('We are connected')
+  console.log('We are connected')
 });
 
 
@@ -44,12 +44,9 @@ run().catch(console.dir);
 
 const UserSchema = new mongoose.Schema({
 
-    Name: String,
-    Email: String,
-    Phone: String,
-    Date_of_Birth: String,
-    Experience: String,
-    Text: String
+  Name: String,
+  Date: String,
+  Cost: String,
 });
 
 
@@ -64,49 +61,55 @@ app.use(express.urlencoded({ extended: false }))
 app.set('views', path.join(__dirname, 'views'))
 
 app.get('/login', (req, res) => {
-    res.status(200).render('register.pug');
+  res.status(200).render('register.pug');
 })
 
 app.get('/', (req, res) => {
-    res.status(200).render('1.pug');
+  res.status(200).render('1.pug');
 })
 app.get('/home', (req, res) => {
-    res.status(200).render('1.pug');
+  res.status(200).render('1.pug');
 })
 app.post('/execute', (req, res) => {
   let name = req.body.input_value1;
   let date = req.body.input_value2;
   let cost = req.body.input_value3;
+  const createPlaylist = new Kitten({
+    Name: name,
+    Date: date,
+    Cost: cost,
+  });
+  createPlaylist.save();
   // console.log(name);
   // console.log(date);
   // console.log(cost);
   var params = { content: 'success' }
-  res.status(200).render('1.pug',params,name,date,cost);
+  res.status(200).render('1.pug', params);
 });
 app.post('/login', (req, res) => {
 
-    let name = req.body.name
-    let emailID = req.body.emailID
-    let phone = req.body.phoneNumber
-    let birth = req.body.date
-    let exp = req.body.counter
-    let text = req.body.textarea1
-    // console.log(name)
-    const createPlaylist = new Kitten({
-        Name: name,
-        Email: emailID,
-        Phone: phone,
-        Date_of_Birth: birth,
-        Experience: exp,
-        Text: text
-    });
-    createPlaylist.save();
+  // let name = req.body.name
+  // let emailID = req.body.emailID
+  // let phone = req.body.phoneNumber
+  // let birth = req.body.date
+  // let exp = req.body.counter
+  // let text = req.body.textarea1
+  // // console.log(name)
+  // const createPlaylist = new Kitten({
+  //   Name: name,
+  //   Email: emailID,
+  //   Phone: phone,
+  //   Date_of_Birth: birth,
+  //   Experience: exp,
+  //   Text: text
+  // });
+  // createPlaylist.save();
 
-    var params = { content: 'success' }
-    res.status(200).render('register.pug', params);
+  var params = { content: 'success' }
+  res.status(200).render('register.pug', params);
 })
 
 
 app.listen(port, () => {
-    console.log(`The application started sucessfully on port ${port}`)
+  console.log(`The application started sucessfully on port ${port}`)
 })

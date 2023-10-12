@@ -70,7 +70,7 @@ app.get('/', (req, res) => {
 app.get('/home', (req, res) => {
   res.status(200).render('1.pug');
 })
-app.post('/execute', (req, res) => {
+app.post('/', (req, res) => {
   let name = req.body.input_value1;
   let date = req.body.input_value2;
   let cost = req.body.input_value3;

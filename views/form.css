@@ -1,0 +1,104 @@
+#container {
+    height: 42px;
+    background-image: linear-gradient(to right, blue 0 50%, red 50% 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  h1 {
+    
+    color: white;
+    text-align: center;
+  }
+       /* h1
+        {
+            
+            font-size: 30px;
+            background-color: red;
+            background-size: 50%;
+        }
+        h1:hover
+        {
+            color: aqua;
+            font-size: 40px;
+            background-color: white;
+        } */
+        body
+        {
+            background-color: black;
+            
+            
+            color: white;
+            font-family: cursive;
+            padding:0%
+        }
+        #Z
+        {
+            background: url("https://e1.pxfuel.com/desktop-wallpaper/465/1007/desktop-wallpaper-psg-players-2022-psg.jpg") no-repeat fixed center;
+            background-size: 500px;
+        }
+        #A
+        {
+            padding-top: 30px;
+        }
+        #A,#B,#C
+        {
+            font-size: 30px;
+        }
+        
+        #name
+        {
+            height: 30px;
+            width: 344px;
+        }
+        #emailID
+        {
+            
+            height: 30px;
+            width: 300px;
+        }
+        #phoneNumber
+        {
+            
+            height: 30px;
+            width: 295px;
+        }
+        #DOB
+        {
+            height: 30px;
+            width: 150px;
+        }
+        #fileUpload
+        {
+            height: 30px;
+            width: 200px;
+        }
+        #counter
+        {
+            height: 30px;
+            width: 150px;
+        }
+        #educationType
+        {
+            height: 30px;
+            width: 300px;
+        }
+        input
+        {
+            background: transparent;
+            color: aliceblue;
+        }
+
+        #emailID:hover,#DOB:hover,#counter:hover,#submit:hover
+        {
+            background-color: white;
+            color: black;
+        }
+        
+        #name:hover,#phoneNumber:hover,#fileUpload:hover,#educationType:hover,#textarea1:hover,#reset:hover
+        {
+            
+            background-color: white;
+            color: black;
+        }

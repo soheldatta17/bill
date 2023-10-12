@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Bill Calculator</title>
+    <link rel="stylesheet" type="text/css" href="3.css">
+</head>
+
+<body>
+    <br><br><br><br>
+    <div class="container">
+        <h1>Bill Calculator</h1>
+        <form action="/execute" method="POST">
+            <label for="input_value1">Name:</label>
+            <input type="text" id="input_value1" name="input_value1" placeholder="Enter Name">
+            <br>
+            
+            <div class="form-group">
+                <label for="input_value2">SELECT A DATE</label>
+                <input type="date" id="input_value2" name="input_value2">
+            </div>
+            <br>
+            <label for="input_value3">COST</label>
+            <input type="text" id="input_value3" name="input_value3" placeholder="Enter your Cost">
+            <br>
+            <!-- <div class="form-group"> -->
+                <label for="payment_method">WHO ARE YOU ?</label>
+                <select id="payment_method" name="payment_method">
+                    <option value="father">SATYABRATA</option>
+                    <option value="mother">RACHANA</option>
+                    <option value="sister">SOHINI</option>
+                    <option value="me">SOHEL</option>
+                </select>
+            <!-- </div> -->
+            <br>
+            <button type="submit" id="submit">SUBMIT</button>
+        </form>
+    </div>
+</body>
+
+</html>

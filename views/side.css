@@ -1,0 +1,187 @@
+
+    /* @import url('https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap'); */
+.main_content .header {
+  height: 58px;
+  background-image: linear-gradient(to right, blue 0 50%, red 50% 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: block;
+}
+
+.main_content .header  h1 {
+  font-size: 40px;
+  color: white;
+  text-align: center; 
+  margin-top: 7px;
+}
+#button{
+  /* margin-left: 99.5%;
+  margin-right: 0.5%; */
+  color: black;
+  background-color: #fff;
+  text-align: center;
+  position: absolute;
+  top: 5px;
+  right: 15px;
+  height: 62px;
+  
+  
+}
+#button:hover
+{
+  color: white;
+  background-color: rgb(27, 237, 132);
+  
+}
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+  font-family: cursive;
+  color: white;
+}
+img
+{
+    
+    float: right;
+    height: 270px;
+}
+body{
+   background-color: black
+}
+#Z
+{
+  
+  background: url("https://e1.pxfuel.com/desktop-wallpaper/465/1007/desktop-wallpaper-psg-players-2022-psg.jpg") no-repeat fixed center;
+  background-size: 500px;
+}
+p:hover
+{
+  background-color: #fff;
+  color: black;
+}
+.wrapper{
+  display: flex;
+  position: relative;
+}
+
+.wrapper .sidebar{
+  width: 200px;
+  height: 100%;
+  padding: 30px 0px;
+  position: fixed;
+  border-style: solid;
+  border-color: #fff;
+  border-width: 1px;
+}
+
+.wrapper .sidebar h2{
+  padding-bottom: 10px;
+  color:white red 50%;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 30px;
+}
+ 
+
+.wrapper .sidebar ul li a{
+  padding: 10px;
+  color: white;
+  display: block;
+  border-style: solid;
+  border-color: #fff;
+  border-width: 1px;
+  box-sizing: border-box;
+}
+
+.wrapper .sidebar ul li a .fas{
+  width: 25px;
+}
+.wrapper .sidebar .wrapper .sidebar ul,li:hover  a{
+  
+  background-image: linear-gradient(to right, blue 0 50%, red 50% 100%);
+  
+}
+.wrapper .sidebar .wrapper .sidebar ul,li:hover
+{
+  padding-left: 50px;
+}
+    
+
+ 
+.wrapper .sidebar .social_media{
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+}
+
+.wrapper .sidebar .social_media a{
+  display: block;
+  width: 40px;
+  background: #594f8d;
+  height: 40px;
+  line-height: 45px;
+  text-align: center;
+  margin: 0 5px;
+  color: #bdb8d7;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  padding-bottom: 20px;
+}
+.wrapper .sidebar .social_media a:hover i{
+    background-color: rgba(0, 255, 30, 0.814);
+    color: #fff;
+
+  
+  }
+
+.wrapper .main_content{
+  width: 100%;
+  margin-left: 200px;
+}
+
+.wrapper .main_content .header h3{
+    padding: 20px;
+    background: #fff;
+    color: #717171;
+    border-bottom: 1px solid #e0e4e8;
+    text-align: center;
+  }
+  .wrapper .main_content .header table
+  {
+    width: 100%;
+  }
+  .wrapper .main_content .header button{
+    font-size: medium;
+    border-radius: 20px;
+    text-transform: uppercase;
+    /* display: inline; */
+    float: right;
+    padding: 19px;
+    background: #fff;
+    color: #717171;
+    border-bottom: 1px solid #e0e4e8;
+  }
+
+.wrapper .main_content .info{
+    display: block;
+    float: left;
+  margin: 20px;
+  font-size: medium;
+  line-height: 25px;
+}
+
+.wrapper .main_content .info div{
+  padding-top: 50px;
+  margin-bottom: 20px;
+}
+.info p
+{
+  line-height: 40px;
+}

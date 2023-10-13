@@ -16,11 +16,13 @@ body {
     margin: auto auto;
 }
 
+/* Header Styles */
 h1 {
     color: #333;
 }
 
-form {
+/* Form Styles */
+#A {
     text-align: center;
     margin-top: 20px;
     margin-right: 20px;
@@ -31,26 +33,19 @@ label {
     margin-top: 10px;
     font-weight: bold;
 }
-#payment_method
-{
+
+input[type="text"], #payment_method {
     width: 100%;
     padding: 12px;
-    border: none;
     border: 2px solid #007bff;
     border-radius: 5px;
     outline: none;
     font-size: 16px;
     color: black;
-    margin-top: 5px;
-}
-input[type="text"] {
-    width: 100%;
-    padding: 10px;
     margin: 5px 0;
-    border: 1px solid #ccc;
-    border-radius: 3px;
 }
 
+/* Button Styles */
 button {
     padding: 12px;
     border: none;
@@ -61,17 +56,17 @@ button {
     cursor: pointer;
     margin-top: 20px;
     background-color: #0056b3;
+    transition: background-color 0.3s;
 }
 
 button:hover {
     background-color: #003d80;
 }
 
-/* Style the date input field */
+/* Date Input Styles */
 #input_value1, #input_value2, #input_value3 {
     width: 100%;
     padding: 12px;
-    border: none;
     border: 2px solid #007bff;
     border-radius: 5px;
     outline: none;
@@ -79,7 +74,7 @@ button:hover {
     color: black;
 }
 
-/* Style the label associated with the date input */
+/* Label Styles */
 label[for="input_value2"] {
     display: block;
     font-weight: bold;
@@ -87,26 +82,69 @@ label[for="input_value2"] {
     color: #333;
 }
 
-input[type="submit"] {
+/* Button Container Styles */
+.button-container {
     text-align: center;
-    justify-content: center;
-    align-items: center;
+    margin-top: 20px;
 }
 
-/* Media queries for responsive design */
+.button-container button {
+    margin: 0 10px;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    font-size: 16px;
+    color: white;
+    cursor: pointer;
+    background-color: #0056b3;
+    transition: background-color 0.3s;
+}
+
+.button-container button:hover {
+    background-color: #003d80;
+}
+
+/* Media Queries for Responsive Design */
 @media screen and (max-width: 768px) {
-    /* Adjust styles for screens up to 768px wide */
     .container {
         max-width: 100%;
         padding: 10px;
-        background-size: 300px; /* Adjust background size for smaller screens */
+        background-size: 300px;
     }
 }
 
 @media screen and (max-width: 480px) {
-    /* Adjust styles for screens up to 480px wide */
     .container {
         padding: 5px;
-        background-size: 200px; /* Adjust background size for even smaller screens */
+        background-size: 200px;
     }
 }
+/* Style for Transaction Cards */
+.transaction-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.transaction-card {
+    background: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin: 10px;
+    padding: 10px;
+    width: 300px;
+    text-align: left;
+}
+
+.transaction-date,
+.transaction-description,
+.transaction-amount,
+.transaction-name {
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+/* .transaction-date {
+    color: #007bff; /* Blue color for date */
+/* } */ 

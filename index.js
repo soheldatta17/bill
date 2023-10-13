@@ -5,7 +5,11 @@ const { log } = require("console");
 const app = express();
 const port = 3000;
 const mongoose = require("mongoose")
+const bodyParser = require('body-parser');
+// ...
 
+// Use bodyParser.json() middleware to parse JSON data
+app.use(bodyParser.json());
 mongoose.connect('mongodb+srv://soheldatta17:sohel_17rik@cluster0.cgka43s.mongodb.net/PSG', { useNewUrlParser: true });
 // mongoose.connect('mongodb+srv://soheldatta17:sohel_17rik@cluster0.cgka43s.mongodb.net/?retryWrites=true&w=majority', { useNewUrlParser: true })
 var db = mongoose.connection;
@@ -45,12 +49,13 @@ run().catch(console.dir);
 const UserSchema = new mongoose.Schema({
 
   Name: String,
+  Item: String,
   Date: String,
   Cost: String,
 });
 
 
-const Kitten = mongoose.model("register", UserSchema);
+const Kitten = mongoose.model("bill", UserSchema);
 
 app.use('/static', express.static('static'))
 
@@ -70,22 +75,34 @@ app.get('/', (req, res) => {
 app.get('/home', (req, res) => {
   res.status(200).render('1.pug');
 })
-app.post('/', (req, res) => {
-  let name = req.body.input_value1;
-  let date = req.body.input_value2;
-  let cost = req.body.input_value3;
-  const createPlaylist = new Kitten({
-    Name: name,
-    Date: date,
-    Cost: cost,
-  });
-  createPlaylist.save();
-  // console.log(name);
-  // console.log(date);
-  // console.log(cost);
-  var params = { content: 'success' }
-  res.status(200).render('1.pug', params);
+app.post('/', async (req, res) => {
+  try {
+    const person=req.body.person;
+    const name = req.body.name;
+    const date = req.body.date;
+    const cost = req.body.cost;
+    const a = req.body
+    const createPlaylist = new Kitten({
+      Name: person,
+      Item: name,
+      Date: date,
+      Cost: cost,
+    });
+
+    const savedData = await createPlaylist.save();
+    console.log(person);
+    console.log(name);
+    console.log(date);
+    console.log(cost);
+    console.log(a);
+
+    return res.status(200).json({ success: 'Data saved successfully', data: savedData });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ error: 'An error occurred while saving data' });
+  }
 });
+
 app.post('/login', (req, res) => {
 
   // let name = req.body.name

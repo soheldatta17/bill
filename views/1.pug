@@ -3,22 +3,22 @@
 
 <head>
     <title>Bill Calculator</title>
-    style
+    style 
       include 3.css
+    script 
+      include 7.js
 </head>
 
 <body>
-    <h1 id="pageTitle" data-title=#{content}></h1>
-    script
-        include confirmation.js
     <br><br><br><br>
     <div class="container">
         <h1>MONTHLY EXPENSE</h1>
-        <form action="/" method="POST">
+        
+        <div id="A">
             <label for="input_value1">NAME</label>
             <input type="text" id="input_value1" name="input_value1" placeholder="Enter Name">
             <br>
-            
+
             <div class="form-group">
                 <label for="input_value2">SELECT A DATE</label>
                 <input type="date" id="input_value2" name="input_value2">
@@ -31,15 +31,27 @@
                 <label for="payment_method">WHO ARE YOU ?</label>
                 <select id="payment_method" name="payment_method">
                     <option value="" selected disabled>SELECT</option>
-                    <option value="father">SATYABRATA</option>
-                    <option value="mother">RACHANA</option>
-                    <option value="sister">SOHINI</option>
-                    <option value="me">SOHEL</option>
+                    <option value="SATYABRATA">SATYABRATA</option>
+                    <option value="RACHANA">RACHANA</option>
+                    <option value="SOHINI">SOHINI</option>
+                    <option value="SOHEL">SOHEL</option>
                 </select><br>
-            
-            <br>
-            <button type="submit" id="submit">SUBMIT</button>
-        </form>
+
+                <br>
+                <div class="button-container">
+                    <button type="submit" id="submit1" onclick="expense()">SUBMIT</button>
+                    <button type="reset" id="submit2" onclick="clear()">RESET</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="transaction-history">
+            <h2 class="tran_his">Transaction History</h2>
+            <div class="transaction-cards">
+            </div>
+        </div>
+
+
     </div>
 </body>
 

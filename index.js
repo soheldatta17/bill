@@ -3,7 +3,7 @@ const path = require("path");
 const fs = require("fs");
 const { log } = require("console");
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 const mongoose = require("mongoose")
 const bodyParser = require('body-parser');
 const PDFDocument = require("pdfkit");
@@ -71,31 +71,39 @@ app.set('views', path.join(__dirname, 'views'))
 app.get('/', (req, res) => {
   res.status(200).render('1.pug');
 })
-app.get("/download", (req, res) => {
-  // const filePath = path.join(__dirname, "output.txt"); // Path to "output.txt"
-  
-  // // Create a new PDF document
-  // const pdfDoc = new PDFDocument();
-  // pdfDoc.pipe(fs.createWriteStream("output.pdf")); // Pipe PDF content to a file
+app.get("/download", async (req, res) => {
+  // Create a new PDF document
+  const pdfDoc = new PDFDocument();
 
-  // // Read the content of "output.txt" and write it to the PDF
-  // const fileContent = fs.readFileSync(filePath, "utf-8");
-  // pdfDoc.text(fileContent);
+  // Set response headers for PDF download
+  res.setHeader("Content-Disposition", "attachment; filename=output.pdf");
+  res.setHeader("Content-Type", "application/pdf");
 
-  // // End the PDF stream
-  // pdfDoc.end();
+  // Pipe PDF content directly to the response
+  pdfDoc.pipe(res);
 
-  // // Send the PDF for download
-  // res.setHeader("Content-Disposition", "attachment; filename=output.pdf");
-  // res.setHeader("Content-Type", "application/pdf");
-  // res.sendFile(path.join(__dirname, "output.pdf"), (err) => {
+  try {
+    // Retrieve data from the database (replace with your actual code)
+    const data = await Kitten.find({});
     
-  // });
-  res.status(200).render('1.pug');
+    // Loop through retrieved data and add formatted content to the PDF
+    data.forEach(record => {
+      const formattedContent = `Name: ${record.Name}\nItem: ${record.Item}\nDate: ${record.Date}\nCost: ${record.Cost}\n\n`;
+      pdfDoc.text(formattedContent);
+    });
+
+    // End the PDF stream
+    pdfDoc.end();
+  } catch (error) {
+    // Handle any errors that occur when retrieving data
+    console.error(error);
+    res.status(500).send("Error retrieving data from the database.");
+  }
 });
+
 app.post('/', async (req, res) => {
   try {
-    const person=req.body.person;
+    const person = req.body.person;
     const name = req.body.name;
     const date = req.body.date;
     const cost = req.body.cost;
@@ -134,15 +142,6 @@ app.get('/login', async (req, res) => {
     const data = await Kitten.find({});
     const retrievedData = data;
     console.log(retrievedData);
-    // const formattedData = retrievedData.map(record => {
-    //   return `Name: ${record.Name}\nItem Name: ${record.Item}\nDate: ${record.Date}\nCost: ${record.Cost}\n\n`;
-    // });
-
-    // // Join the formatted data into a single string
-    // const outputString = formattedData.join('');
-
-    // // Write the formatted data to the "output.txt" file
-    // fs.writeFileSync('output.txt', outputString, 'utf-8');
 
     res.status(200).json(retrievedData); // Respond with JSON
   } catch (error) {

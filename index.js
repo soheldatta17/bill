@@ -89,10 +89,7 @@ app.get("/download", (req, res) => {
   res.setHeader("Content-Disposition", "attachment; filename=output.pdf");
   res.setHeader("Content-Type", "application/pdf");
   res.sendFile(path.join(__dirname, "output.pdf"), (err) => {
-    if (err) {
-      console.error(err);
-      res.status(500).send("Error downloading the PDF.");
-    }
+    
   });
 });
 app.post('/', async (req, res) => {
@@ -119,7 +116,7 @@ app.post('/', async (req, res) => {
     return res.status(200).json({ success: 'Data saved successfully', data: savedData });
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ error: 'An error occurred while saving data' });
+    // return res.status(500).json({ error: 'An error occurred while saving data' });
   }
 });
 app.get('/2', (req, res) => {

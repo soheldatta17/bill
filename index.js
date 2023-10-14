@@ -6,6 +6,7 @@ const app = express();
 const port = 3000;
 const mongoose = require("mongoose")
 const bodyParser = require('body-parser');
+const PDFDocument = require("pdfkit");
 // ...
 
 // Use bodyParser.json() middleware to parse JSON data
@@ -70,9 +71,30 @@ app.set('views', path.join(__dirname, 'views'))
 app.get('/', (req, res) => {
   res.status(200).render('1.pug');
 })
-app.get('/home', (req, res) => {
-  res.status(200).render('1.pug');
-})
+app.get("/download", (req, res) => {
+  const filePath = path.join(__dirname, "output.txt"); // Path to "output.txt"
+  
+  // Create a new PDF document
+  const pdfDoc = new PDFDocument();
+  pdfDoc.pipe(fs.createWriteStream("output.pdf")); // Pipe PDF content to a file
+
+  // Read the content of "output.txt" and write it to the PDF
+  const fileContent = fs.readFileSync(filePath, "utf-8");
+  pdfDoc.text(fileContent);
+
+  // End the PDF stream
+  pdfDoc.end();
+
+  // Send the PDF for download
+  res.setHeader("Content-Disposition", "attachment; filename=output.pdf");
+  res.setHeader("Content-Type", "application/pdf");
+  res.sendFile(path.join(__dirname, "output.pdf"), (err) => {
+    if (err) {
+      console.error(err);
+      res.status(500).send("Error downloading the PDF.");
+    }
+  });
+});
 app.post('/', async (req, res) => {
   try {
     const person=req.body.person;
@@ -101,7 +123,10 @@ app.post('/', async (req, res) => {
   }
 });
 app.get('/2', (req, res) => {
-  res.status(200).render('2.pug');
+  res.render('2.pug');
+});
+app.get('/1', (req, res) => {
+  res.render('1.pug');
 });
 
 
@@ -111,6 +136,16 @@ app.get('/login', async (req, res) => {
     const data = await Kitten.find({});
     const retrievedData = data;
     console.log(retrievedData);
+    const formattedData = retrievedData.map(record => {
+      return `Name: ${record.Name}\nItem Name: ${record.Item}\nDate: ${record.Date}\nCost: ${record.Cost}\n\n`;
+    });
+
+    // Join the formatted data into a single string
+    const outputString = formattedData.join('');
+
+    // Write the formatted data to the "output.txt" file
+    fs.writeFileSync('output.txt', outputString, 'utf-8');
+
     res.status(200).json(retrievedData); // Respond with JSON
   } catch (error) {
     console.error(error);

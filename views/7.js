@@ -82,11 +82,11 @@ function expense() {
     })
         .then(response => response.json())
         .then(data => {
-            alert('Success');
+            // alert('Success');
             // Handle the server's response, if needed
         })
         .catch(error => {
-            alert('Error')
+            // alert('Error')
             console.error(error);
         });
         

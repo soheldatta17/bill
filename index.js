@@ -101,7 +101,7 @@ app.post('/', async (req, res) => {
   }
 });
 app.get('/2', (req, res) => {
-  res.render('2.pug');
+  res.status(200).render('2.pug');
 });
 
 

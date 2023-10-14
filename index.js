@@ -72,25 +72,26 @@ app.get('/', (req, res) => {
   res.status(200).render('1.pug');
 })
 app.get("/download", (req, res) => {
-  const filePath = path.join(__dirname, "output.txt"); // Path to "output.txt"
+  // const filePath = path.join(__dirname, "output.txt"); // Path to "output.txt"
   
-  // Create a new PDF document
-  const pdfDoc = new PDFDocument();
-  pdfDoc.pipe(fs.createWriteStream("output.pdf")); // Pipe PDF content to a file
+  // // Create a new PDF document
+  // const pdfDoc = new PDFDocument();
+  // pdfDoc.pipe(fs.createWriteStream("output.pdf")); // Pipe PDF content to a file
 
-  // Read the content of "output.txt" and write it to the PDF
-  const fileContent = fs.readFileSync(filePath, "utf-8");
-  pdfDoc.text(fileContent);
+  // // Read the content of "output.txt" and write it to the PDF
+  // const fileContent = fs.readFileSync(filePath, "utf-8");
+  // pdfDoc.text(fileContent);
 
-  // End the PDF stream
-  pdfDoc.end();
+  // // End the PDF stream
+  // pdfDoc.end();
 
-  // Send the PDF for download
-  res.setHeader("Content-Disposition", "attachment; filename=output.pdf");
-  res.setHeader("Content-Type", "application/pdf");
-  res.sendFile(path.join(__dirname, "output.pdf"), (err) => {
+  // // Send the PDF for download
+  // res.setHeader("Content-Disposition", "attachment; filename=output.pdf");
+  // res.setHeader("Content-Type", "application/pdf");
+  // res.sendFile(path.join(__dirname, "output.pdf"), (err) => {
     
-  });
+  // });
+  res.status(200).render('1.pug');
 });
 app.post('/', async (req, res) => {
   try {

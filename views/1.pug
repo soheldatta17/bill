@@ -4,9 +4,11 @@
 <head>
     <title>Bill Calculator</title>
     style 
-      include 3.css
+      include 6.css
     script 
       include 7.js
+    script 
+      include 9.js
 </head>
 
 <body>
@@ -15,8 +17,8 @@
         <h1>MONTHLY EXPENSE</h1>
         
         <div id="A">
-            <label for="input_value1">ITEM NAME</label>
-            <input type="text" id="input_value1" name="input_value1" placeholder="Enter Item Name">
+            <label for="input_value1">NAME</label>
+            <input type="text" id="input_value1" name="input_value1" placeholder="Enter Name">
             <br>
 
             <div class="form-group">
@@ -40,7 +42,7 @@
                 <br>
                 <div class="button-container">
                     <button type="submit" id="submit1" onclick="expense()">SUBMIT</button>
-                    <button type="reset" id="submit2" onclick="clear()">RESET</button>
+                    <button type="reset" id="submit2">RESET</button>
                 </div>
             </div>
         </div>

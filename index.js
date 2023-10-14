@@ -65,9 +65,7 @@ app.engine('pug', require('pug').__express);
 app.use(express.urlencoded({ extended: false }))
 app.set('views', path.join(__dirname, 'views'))
 
-app.get('/login', (req, res) => {
-  res.status(200).render('register.pug');
-})
+
 
 app.get('/', (req, res) => {
   res.status(200).render('1.pug');
@@ -102,29 +100,23 @@ app.post('/', async (req, res) => {
     return res.status(500).json({ error: 'An error occurred while saving data' });
   }
 });
+app.get('/2', (req, res) => {
+  res.render('2.pug');
+});
 
-app.post('/login', (req, res) => {
 
-  // let name = req.body.name
-  // let emailID = req.body.emailID
-  // let phone = req.body.phoneNumber
-  // let birth = req.body.date
-  // let exp = req.body.counter
-  // let text = req.body.textarea1
-  // // console.log(name)
-  // const createPlaylist = new Kitten({
-  //   Name: name,
-  //   Email: emailID,
-  //   Phone: phone,
-  //   Date_of_Birth: birth,
-  //   Experience: exp,
-  //   Text: text
-  // });
-  // createPlaylist.save();
-
-  var params = { content: 'success' }
-  res.status(200).render('register.pug', params);
-})
+app.get('/login', async (req, res) => {
+  // res.status(200).render('2.pug');
+  try {
+    const data = await Kitten.find({});
+    const retrievedData = data;
+    console.log(retrievedData);
+    res.status(200).json(retrievedData); // Respond with JSON
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'An error occurred while retrieving data' });
+  }
+});
 
 
 app.listen(port, () => {

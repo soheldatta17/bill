@@ -36,7 +36,7 @@ function expense() {
     dateElement.classList.add("transaction-date");
     dateElement.innerText = "Date: " + date;
 
-    
+
 
     var amountElement = document.createElement("div");
     amountElement.classList.add("transaction-amount");
@@ -89,4 +89,25 @@ function expense() {
             alert('Error')
             console.error(error);
         });
+        
+    // fetch("/login", {
+    //     method: "GET",
+    // })
+    //     .then(response => {
+    //         if (response.ok) {
+    //             return response.json();
+    //         } else {
+    //             throw new Error("Failed to fetch data");
+    //         }
+    //     })
+    //     .then(data => {
+    //         // Handle the data from the server here
+    //         console.log(data);
+    //     })
+    //     .catch(error => {
+    //         console.error(error);
+    //     });
+
+
 }
+

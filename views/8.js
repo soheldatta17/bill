@@ -23,11 +23,12 @@ document.addEventListener("DOMContentLoaded", function() {
     })
       .then(response => {
         if (response.ok) {
-        //   alert('YES');
+          alert('YES');
           return response.json(); // Parse the response as JSON
         } else {
-        //   alert('NO');
+          alert('NO');
           throw new Error("Failed to fetch data");
+          
         }
       })
       .then(data => {
@@ -35,7 +36,7 @@ document.addEventListener("DOMContentLoaded", function() {
         displayData(data);
       })
       .catch(error => {
-        console.error(error);
+        console.log(error);
       });
   });
   

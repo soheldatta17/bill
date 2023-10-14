@@ -133,15 +133,15 @@ app.get('/login', async (req, res) => {
     const data = await Kitten.find({});
     const retrievedData = data;
     console.log(retrievedData);
-    const formattedData = retrievedData.map(record => {
-      return `Name: ${record.Name}\nItem Name: ${record.Item}\nDate: ${record.Date}\nCost: ${record.Cost}\n\n`;
-    });
+    // const formattedData = retrievedData.map(record => {
+    //   return `Name: ${record.Name}\nItem Name: ${record.Item}\nDate: ${record.Date}\nCost: ${record.Cost}\n\n`;
+    // });
 
-    // Join the formatted data into a single string
-    const outputString = formattedData.join('');
+    // // Join the formatted data into a single string
+    // const outputString = formattedData.join('');
 
-    // Write the formatted data to the "output.txt" file
-    fs.writeFileSync('output.txt', outputString, 'utf-8');
+    // // Write the formatted data to the "output.txt" file
+    // fs.writeFileSync('output.txt', outputString, 'utf-8');
 
     res.status(200).json(retrievedData); // Respond with JSON
   } catch (error) {

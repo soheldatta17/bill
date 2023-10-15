@@ -1,42 +1,40 @@
 document.addEventListener("DOMContentLoaded", function() {
-    function displayData(data) {
+  function displayData(data) {
       const dataContainer = document.getElementById("data-container");
-  
-      // Loop through the retrieved data and create HTML elements with spacing
+
+      // Loop through the retrieved data and create card elements
       data.forEach(item => {
-        const listItem = document.createElement("div");
-        listItem.className = "data-item";
-        listItem.style.marginBottom = "30px"; // Add margin between items
-        listItem.innerHTML = `
-          <p>Name: ${item.Name}</p>
-          <p>Item: ${item.Item}</p>
-          <p>Date: ${item.Date}</p>
-          <p>Cost: ${item.Cost}</p>
-        `;
-        dataContainer.appendChild(listItem);
+          const card = document.createElement("div");
+          card.className = "data-card";
+          card.innerHTML = `
+              <div class="data-item">
+                  <p>Name: ${item.Name}</p>
+                  <p>Item: ${item.Item}</p>
+                  <p>Date: ${item.Date}</p>
+                  <p>Cost: ${item.Cost}</p>
+              </div>
+          `;
+
+          dataContainer.appendChild(card);
       });
-    }
-  
-    // Make a GET request to your server and handle the response
-    fetch("/login", {
+  }
+
+  // Make a GET request to your server and handle the response
+  fetch("/login", {
       method: "GET",
-    })
+  })
       .then(response => {
-        if (response.ok) {
-          alert('YES');
-          return response.json(); // Parse the response as JSON
-        } else {
-          alert('NO');
-          throw new Error("Failed to fetch data");
-          
-        }
+          if (response.ok) {
+              return response.json(); // Parse the response as JSON
+          } else {
+              throw new Error("Failed to fetch data");
+          }
       })
       .then(data => {
-        // Call the function to display the retrieved data
-        displayData(data);
+          // Call the function to display the retrieved data
+          displayData(data);
       })
       .catch(error => {
-        console.log(error);
+          console.error(error);
       });
-  });
-  
+});
